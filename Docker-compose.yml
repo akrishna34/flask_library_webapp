@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  postgres:
+      image: postgres:9.5-alpine
+      environment:
+        POSTGRES_USER: postgres     # define credentials
+        POSTGRES_PASSWORD: postgres # define credentials
+        POSTGRES_DB: Library      # define database
+      ports:
+        - 5432:5432                 # Postgres port
+
+  app:
+      image: book_catalog4:latest
+
+      ports:
+        - 5000:5000
+      depends_on:
+        - postgres
+
+
+
